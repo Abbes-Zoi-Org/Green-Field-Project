@@ -1,8 +1,9 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require("cors");
+const passport = require("passport");
+const users = require("./routes/api/users");
+const app = express();
 
 app.use(
   bodyParser.urlencoded({
@@ -10,19 +11,18 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(cors());
-require("dotenv").config();
-mongoose.set("strictQuery", false);
-mongoose.connect(
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PW}@cluster0.sao5htp.mongodb.net/?retryWrites=true&w=majority
-  `,
-  { useNewUrlParser: true }
-)
-.then (() => console.log("Connected DB"))
-.catch(err => console.log(err))
 
-const PORT = process.env.PORT || 5001;
+const db = require("./config/keys").mongoURI;
 
-app.listen(PORT, () => {
-  console.log(`Server Running on port ${PORT}`);
-});
+mongoose
+  .set("strictQuery", false)
+  .connect(db, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch((err) => console.log(err));
+
+app.use(passport.initialize());
+require("./config/passport")(passport);
+app.use("/api/users", users);
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Server running on port ${port}`));
