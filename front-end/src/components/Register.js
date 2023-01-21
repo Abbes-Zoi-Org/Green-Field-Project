@@ -11,7 +11,7 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required.
+        This field is required
       </div>
     );
   };
@@ -21,27 +21,37 @@ const validEmail = (value) => {
   if (!isEmail(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        This is not a valid email.
+        This is not a valid email
       </div>
     );
   };
 };
 
-const vUsername = (value) => {
+const validUsername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
+        The username must be between 3 and 20 characters
       </div>
     );
   };
 };
 
-const vPassword = (value) => {
-  if (value.length < 6 || value.length > 30) {
+const validPassword = (value) => {
+  if (value.length < 8 || value.length > 30) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 30 characters.
+        The password must be between 8 and 30 characters
+      </div>
+    );
+  };
+};
+
+const validPassword2 = (value, password) => {
+  if (!(parseInt(value) === parseInt(password))) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        Passwords do not match.
       </div>
     );
   };
@@ -54,6 +64,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -70,6 +81,11 @@ const Register = () => {
   const onChangePassword = (e) => {
     const password = e.target.value;
     setPassword(password);
+  };
+
+  const onChangePassword2 = (e) => {
+    const password2 = e.target.value;
+    setPassword2(password2);
   };
 
   const handleRegister = (e) => {
@@ -100,7 +116,6 @@ const Register = () => {
         <img
           src="../img/avatar.png"
           alt="profile-img"
-          className="profile-img-card"
         />
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
@@ -114,7 +129,7 @@ const Register = () => {
                   name="username"
                   value={username}
                   onChange={onChangeUsername}
-                  validations={[required, vUsername]}
+                  validations={[required, validUsername]}
                 />
               </div>
               {/*--- Email ---*/}
@@ -138,7 +153,19 @@ const Register = () => {
                   name="password"
                   value={password}
                   onChange={onChangePassword}
-                  validations={[required, vPassword]}
+                  validations={[required, validPassword]}
+                />
+              </div>
+              {/*--- Confirm Password ---*/}
+              <div className="form-group">
+                <label htmlFor="password2">Confirm Password</label>
+                <Input
+                  type="password"
+                  className="form-control"
+                  name="password2"
+                  value={password2}
+                  onChange={onChangePassword2}
+                  validations={[required, validPassword2]}
                 />
               </div>
               {/*--- Sign Up ---*/}

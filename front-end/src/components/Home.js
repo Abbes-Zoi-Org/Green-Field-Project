@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from "react";
+// Services
 import UserService from "../services/UserService.js";
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <div className="container">
       <header className="jumbotron">
+        <h3>HomeJS</h3>
         <h3>{content}</h3>
       </header>
     </div>

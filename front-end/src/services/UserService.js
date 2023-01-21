@@ -9,7 +9,10 @@ const getPublicContent = () => {
 };
 
 const getUser = () => {
-  return axios.get(CT_URL + "user", { headers: authHeader() });
+  return axios.get(
+    CT_URL + "user",
+    { headers: authHeader() }
+  );
 };
 
 const UserService = {

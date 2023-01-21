@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 // Components
 import AddMeal from "./AddMeal.js";
 // Services
@@ -71,7 +71,13 @@ const MealsList = () => {
         >
           Remove All
         </button>
-        <button className="m-3 btn btn-lg btn-primary rounded-circle" onClick={<AddMeal />}>+</button>
+
+        <button className="m-3 btn btn-lg btn-primary rounded-circle">
+          Add Meal
+        </button>
+
+        <AddMeal />
+
       </div>
       <div className="col-md-6">
         {currentMeal ? (
@@ -102,6 +108,11 @@ const MealsList = () => {
             <p>Let's click on a Meal...</p>
           </div>
         )}
+      </div>
+      <div className="container mt-3">
+        <Routes>
+          <Route path="/meals/add" element={<AddMeal />} />
+        </Routes>
       </div>
     </div>
   );

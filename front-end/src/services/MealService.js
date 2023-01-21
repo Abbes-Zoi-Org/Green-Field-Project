@@ -1,11 +1,11 @@
 import http from "../http-common.js";
 
 // Create
-const create = data => {
+const create = (data) => {
   return http.post("/meals", data);
 };
 // Retrieve
-const get = id => {
+const get = (id) => {
   return http.get(`/meals/${id}`);
 };
 const getAll = () => {
@@ -16,7 +16,7 @@ const update = (id, data) => {
   return http.put(`/meals/${id}`, data);
 };
 // Delete
-const remove = id => {
+const remove = (id) => {
   return http.delete(`/meals/${id}`);
 };
 const removeAll = () => {

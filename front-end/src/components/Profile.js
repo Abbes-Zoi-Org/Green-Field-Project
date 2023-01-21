@@ -8,24 +8,26 @@ const Profile = () => {
   return (
     <div className="container">
       <header className="jumbotron">
+        <h1>Profile</h1>
         <h3>
-          <strong>{currentUser.username}</strong> Profile
+          <strong>Name:</strong> {currentUser.name}
         </h3>
+        <p>
+          <strong>Age:</strong> {currentUser.age}
+        </p>
+        <p>
+          <strong>Gender:</strong> {currentUser.gender}
+        </p>
+        <p>
+          <strong>Height:</strong> {currentUser.height}
+        </p>
+        <p>
+          <strong>Weight:</strong> {currentUser.weight}
+        </p>
+        <p>
+          <strong>BMI:</strong> {currentUser.bmi}
+        </p>
       </header>
-      <p>
-        <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-        {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-      </p>
-      <p>
-        <strong>Id:</strong> {currentUser.id}
-      </p>
-      <p>
-        <strong>Email:</strong> {currentUser.email}
-      </p>
-      <strong>Authorities:</strong>
-      <ul>
-        {currentUser.roles && currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-      </ul>
     </div>
   );
 };

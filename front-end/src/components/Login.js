@@ -11,7 +11,7 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required.
+        This field is required
       </div>
     );
   };
@@ -70,7 +70,6 @@ const Login = () => {
         <img
           src="../img/avatar.png"
           alt="profile-img"
-          className="profile-img-card"
         />
         <Form onSubmit={handleLogin} ref={form}>
           {/* --- Username ---*/}

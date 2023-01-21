@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// Services
 import MealService from "../services/MealService.js";
 
 const AddMeal = () => {
@@ -45,7 +46,7 @@ const AddMeal = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-          <h4>Submitted successfully!</h4>
+          <h4>Added successfully!</h4>
           <button className="btn btn-success" onClick={newMeal}>
             Add
           </button>

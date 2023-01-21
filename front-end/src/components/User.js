@@ -5,7 +5,7 @@ import UserService from "../services/UserService.js";
 const User = () => {
   const [content, setContent] = useState("");
 
-  useEffect(() => {
+  useEffect(() => { 
     UserService.getUser().then(
       (res) => { setContent(res.data); },
       (err) => {
@@ -18,6 +18,7 @@ const User = () => {
   return (
     <div className="container">
       <header className="jumbotron">
+        <h3>UserJS</h3>
         <h3>{content}</h3>
       </header>
     </div>

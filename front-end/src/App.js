@@ -11,19 +11,16 @@ import Home from "./components/Home.js";
 import Profile from "./components/Profile.js";
 import User from "./components/User.js";
 import Meal from "./components/Meal.js";
-import AddMeal from "./components/AddMeal.js";
 import MealsList from "./components/MealsList.js";
 // Services
 import AuthService from "./services/AuthService.js";
 
 // App
 function App() {
-  const [currentUser, setCurrentUser] = useState(true);
+  const [currentUser, setCurrentUser] = useState(undefined); // true or false for testing
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    if (user) {
-      setCurrentUser(user);
-    }
+    if (user) { setCurrentUser(user); }
   }, []);
   const logOut = () => {
     AuthService.logout();
@@ -33,55 +30,62 @@ function App() {
   return (
     <div className="App">
       {/* --- NavBar --- */}
-      <nav className="navbar navbar-expand navbar-dark bg-primary">
-        <li>
-          <Link to={"/"} className="navbar-brand">
-            Calories Tracker
-          </Link>
-        </li>
-        {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/meals"} className="nav-link">
-                Monday
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/meals"} className="nav-link">
-                ...
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/meals"} className="nav-link">
-                Sunday
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/profile"} className="nav-link">
-                Profile
-                {currentUser.username}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                User
-                {currentUser.username}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
-                LogOut
-              </a>
-            </li>
+      <nav className="navbar navbar-expand-lg bg-primary">
+        <div className="container-fluid">
+          <ul><Link to={"/"} className="navbar-brand active">Calories Tracker</Link></ul>
+          {currentUser ? (
+          <div className="collapse navbar-collapse" id="caloriesTracker">
+            <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+              <li className="nav-item dropdown">
+                <p className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Days
+                </p>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Monday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Tuesday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Wednesday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Thursday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Friday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Saturday</Link>
+                  </li>
+                  <li>
+                    <Link to={"/meals"} className="dropdown-item">Sunday</Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-item">
+                <Link to={"/profile"} className="nav-link">
+                  <Profile />
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/user"} className="nav-link">
+                  <User />
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href={"/login"} className="nav-link" onClick={logOut}>LogOut</Link>
+              </li>
+            </ul>
           </div>
         ) : (
-          <div className="navbar-nav ml-auto">
+          <div className="navbar-nav ml-auto d-flex">
             <li className="nav-item">
               <Link to={"/login"} className="nav-link">
                 Login
               </Link>
             </li>
-
             <li className="nav-item">
               <Link to={"/register"} className="nav-link">
                 Sign Up
@@ -89,18 +93,17 @@ function App() {
             </li>
           </div>
         )}
+        </div>
       </nav>
-
+      {/*--- Routes ---*/}
       <div className="container mt-3">
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/user" element={<User />} />
           <Route path="/meals/:id" element={<Meal />} />
-          <Route path="/add" element={<AddMeal />} />
           <Route path="/meals" element={<MealsList />} />
         </Routes>
       </div>
