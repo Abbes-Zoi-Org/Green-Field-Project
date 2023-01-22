@@ -32,7 +32,7 @@ if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords do not match";
   }
   if (!Validator.equals(data.pic, data.pic)) {
-    errors.pic = "Passwords do not match";
+    errors.pic = "Please upload a profile pic";
   }
 return {
     errors,
