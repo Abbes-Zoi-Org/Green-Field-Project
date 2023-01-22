@@ -1,3 +1,22 @@
+body, html {
+  background-image: url("./img/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(88, 6, 6);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  margin: 0;
+}
+
+.bg-orange {
+  background-color: rgb(240, 80, 20);
+}
+
+.c-white {
+  color:rgb(240, 240, 240);
+}
+
 .list {
   text-align: left;
   max-width: 750px;
@@ -25,7 +44,7 @@ label {
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #ffefc4;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;

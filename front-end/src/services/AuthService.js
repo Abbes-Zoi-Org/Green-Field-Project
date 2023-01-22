@@ -1,11 +1,11 @@
 // Authentication Service
 import axios from "axios";
 
-const CT_URL = "http://localhost:5000/api/users/";
+const API_URL = "http://localhost:5000/api/users/";
 
 const register = (name, email, password, password2, pic) => {
   return axios.post(
-    CT_URL + "register",
+    API_URL + "register",
     {
     name,
     email,
@@ -19,7 +19,7 @@ const register = (name, email, password, password2, pic) => {
 const login = (email, password) => {
   return axios
     .post(
-      CT_URL + "login",
+      API_URL + "login",
       {
       email,
       password,

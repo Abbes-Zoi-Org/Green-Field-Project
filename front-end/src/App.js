@@ -23,6 +23,7 @@ function App() {
     if (user) { setCurrentUser(user); }
   }, []);
   const logOut = () => {
+    setCurrentUser(false);
     AuthService.logout();
   };
 
@@ -30,77 +31,52 @@ function App() {
   return (
     <div className="App">
       {/* --- NavBar --- */}
-      <nav className="navbar navbar-expand-lg bg-primary">
-        <div className="container-fluid">
-          <ul><Link to={"/"} className="navbar-brand active">Calories Tracker</Link></ul>
+      <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <Link to={"/"} className="navbar-brand ms-3">
+            Calories Tracker
+          </Link>
+
           {currentUser ? (
-          <div className="collapse navbar-collapse" id="caloriesTracker">
-            <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-              <li className="nav-item dropdown">
-                <p className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Days
-                </p>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Monday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Tuesday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Wednesday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Thursday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Friday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Saturday</Link>
-                  </li>
-                  <li>
-                    <Link to={"/meals"} className="dropdown-item">Sunday</Link>
-                  </li>
-                </ul>
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/meals"} className="nav-link">
+                  Meals
+                </Link>
               </li>
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
-                  <Profile />
+                  Profile
                 </Link>
               </li>
+              <li className="nav-item align-self-end">
+                <a href="/login" className="nav-link" onClick={logOut}>
+                  LogOut
+                </a>
+              </li>
+            </div>
+          ) : (
+            <div className="navbar-nav ml-auto d-flex">
               <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  <User />
+                <Link to={"/login"} className="nav-link">
+                  Login
                 </Link>
               </li>
+
               <li className="nav-item">
-                <Link href={"/login"} className="nav-link" onClick={logOut}>LogOut</Link>
+                <Link to={"/register"} className="nav-link">
+                  Sign Up
+                </Link>
               </li>
-            </ul>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto d-flex">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
-                Sign Up
-              </Link>
-            </li>
-          </div>
-        )}
-        </div>
-      </nav>
+            </div>
+          )}
+        </nav>
       {/*--- Routes ---*/}
       <div className="container mt-3">
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/user" element={<User />} />
           <Route path="/meals/:id" element={<Meal />} />

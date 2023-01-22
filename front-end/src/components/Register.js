@@ -4,7 +4,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-//Avatar
+// Avatar
 import profile from "../img/profile.png"
 // Services
 import AuthService from "../services/AuthService.js";
@@ -159,7 +159,7 @@ const Register = () => {
           <img
             src={picPreview || profile}
             alt="Profile"
-            className="rounded-circle cursor-pointer"
+            className="profile-img-card rounded-circle cursor-pointer"
             onClick={addFile}
           />
             <input

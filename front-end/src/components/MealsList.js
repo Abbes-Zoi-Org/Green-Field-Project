@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import Popup from "reactjs-popup";
 // Components
 import AddMeal from "./AddMeal.js";
 // Services
@@ -49,7 +50,6 @@ const MealsList = () => {
   return (
     <div className="list row">
       <div className="col-md-6">
-        <h4>Meals List</h4>
 
         <ul className="list-group">
           {meals &&
@@ -65,22 +65,19 @@ const MealsList = () => {
               </li>
             ))}
         </ul>
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllMeals}
-        >
-          Remove All
-        </button>
 
-        <button className="m-3 btn btn-lg btn-primary rounded-circle">
-          Add Meal
-        </button>
+        <Popup trigger={
+          <button className="m-3 btn btn-lg btn-success">
+            Add Meal
+          </button>
+          } position="bottom center">
+            <div className="card-container card">
+              <AddMeal />
+            </div>
+        </Popup>
 
-        <AddMeal />
-
-      </div>
-      <div className="col-md-6">
-        {currentMeal ? (
+        <div className="col-md-6">
+        {currentMeal && (
           <div>
             <h4>Meal</h4>
             <div>
@@ -102,13 +99,18 @@ const MealsList = () => {
               Edit
             </Link>
           </div>
-        ) : (
-          <div>
-            <br />
-            <p>Let's click on a Meal...</p>
-          </div>
         )}
+        </div>
+        
+        <button
+          className="m-3 btn btn-sm btn-danger"
+          onClick={removeAllMeals}
+        >
+          Delete All
+        </button>
+
       </div>
+
       <div className="container mt-3">
         <Routes>
           <Route path="/meals/add" element={<AddMeal />} />

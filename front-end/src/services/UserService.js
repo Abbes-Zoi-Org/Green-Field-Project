@@ -2,15 +2,15 @@
 import axios from "axios";
 import authHeader from "./auth-header.js";
 
-const CT_URL = "http://localhost:5000/caloriestracker/test/";
+const API_URL = "http://localhost:5000/";
 
 const getPublicContent = () => {
-  return axios.get(CT_URL + "all");
+  return axios.get(API_URL + "all");
 };
 
 const getUser = () => {
   return axios.get(
-    CT_URL + "user",
+    API_URL + "user",
     { headers: authHeader() }
   );
 };

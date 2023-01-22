@@ -6,6 +6,8 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 // Services
 import AuthService from "../services/AuthService.js";
+// Avatar
+import profile from "../img/profile.png";
 
 const required = (value) => {
   if (!value) {
@@ -68,8 +70,9 @@ const Login = () => {
       <div className="card card-container">
         {/* --- Profile Image ---*/}
         <img
-          src="../img/avatar.png"
+          src={profile}
           alt="profile-img"
+          className="profile-img-card"
         />
         <Form onSubmit={handleLogin} ref={form}>
           {/* --- Username ---*/}
