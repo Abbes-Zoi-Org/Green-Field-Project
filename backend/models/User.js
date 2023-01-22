@@ -11,6 +11,9 @@ const UserSchema = new Schema(
     password: {
       type: String,
     },
+    pic: {
+      type: String,
+    },
     age: {
       type: Number,
     },

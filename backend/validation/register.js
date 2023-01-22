@@ -7,6 +7,7 @@ module.exports = function validateRegisterInput(data) {
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+  data.pic = !isEmpty(data.pic) ? data.pic : "";
 // Name checks
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name field Cannot be Empty";
@@ -29,6 +30,9 @@ if (!Validator.isLength(data.password, { min: 8, max: 30 })) {
   }
 if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = "Passwords do not match";
+  }
+  if (!Validator.equals(data.pic, data.pic)) {
+    errors.pic = "Passwords do not match";
   }
 return {
     errors,

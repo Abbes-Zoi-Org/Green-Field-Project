@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CT_URL = "http://localhost:5000/api/users/";
 
-const register = (name, email, password, password2) => {
+const register = (name, email, password, password2, pic) => {
   return axios.post(
     CT_URL + "register",
     {
@@ -11,6 +11,7 @@ const register = (name, email, password, password2) => {
     email,
     password,
     password2,
+    pic
     }
   );
 };
