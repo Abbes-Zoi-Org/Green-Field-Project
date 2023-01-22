@@ -1,13 +1,13 @@
 // Authentication Service
 import axios from "axios";
 
-const CT_URL = "http://localhost:5000/caloriestracker/auth/";
+const CT_URL = "http://localhost:5000/api/users/";
 
-const register = (username, email, password, password2) => {
+const register = (name, email, password, password2) => {
   return axios.post(
-    CT_URL + "signup",
+    CT_URL + "register",
     {
-    username,
+    name,
     email,
     password,
     password2,
@@ -15,12 +15,12 @@ const register = (username, email, password, password2) => {
   );
 };
 
-const login = (username, password) => {
+const login = (email, password) => {
   return axios
     .post(
       CT_URL + "login",
       {
-      username,
+      email,
       password,
       }
     )

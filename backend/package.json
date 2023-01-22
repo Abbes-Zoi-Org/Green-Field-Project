@@ -20,7 +20,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "front-end": "npm start --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm start front-end\""
   },
   "keywords": [],
   "author": "",

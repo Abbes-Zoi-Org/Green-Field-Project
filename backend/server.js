@@ -4,13 +4,14 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const app = express();
-
+const cors = require("cors")
 app.use(
   bodyParser.urlencoded({
     extended: false,
   })
 );
 app.use(bodyParser.json());
+app.use(cors());
 
 const db = require("./config/keys").mongoURI;
 

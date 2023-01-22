@@ -48,7 +48,7 @@ const validPassword = (value) => {
 };
 
 const validPassword2 = (value, password) => {
-  if (!(parseInt(value) === parseInt(password))) {
+  if ((parseInt(value) === parseInt(password))) {
     return (
       <div className="alert alert-danger" role="alert">
         Passwords do not match.
@@ -61,16 +61,17 @@ const Register = () => {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [username, setUsername] = useState("");
+  const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
+
   const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+    const name = e.target.value;
+    setUsername(name);
   };
 
   const onChangeEmail = (e) => {
@@ -93,10 +94,10 @@ const Register = () => {
     setMessage("");
     setSuccessful(false);
     form.current.validateAll();
-
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+    AuthService.register(name, email, password, password2).then(
         (res) => {
+          console.log(res.status)
           setMessage(res.data.message);
           setSuccessful(true);
         },
@@ -127,7 +128,7 @@ const Register = () => {
                   type="text"
                   className="form-control"
                   name="username"
-                  value={username}
+                  value={name}
                   onChange={onChangeUsername}
                   validations={[required, validUsername]}
                 />
