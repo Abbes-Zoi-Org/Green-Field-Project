@@ -30,7 +30,7 @@ $ git clone https://github.com/Abbes-Zoi-Org/Green-Field-Project.git
 2. Install dependencies 
 - Front-End:
 ```sh
-$ npm install
+$ npm install components
 ```
 
 ```sh
@@ -55,7 +55,7 @@ $ npm install
 - Back-End:
 
 ```sh
-$ npm install
+$ npm install components
 ```
 ```sh
 
