@@ -20,7 +20,7 @@ const remove = (id) => {
   return http.delete(`/meals/${id}`);
 };
 const removeAll = () => {
-  return http.delete(`/meals`);
+  return http.delete("/meals");
 };
 
 const MealService = {

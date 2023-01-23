@@ -26,19 +26,19 @@ const login = (email, password) => {
       }
     )
     .then((res) => {
-      if (res.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(res.data));
+      if (res.data.token) {
+        localStorage.setItem("users", JSON.stringify(res.data));
       }
       return res.data;
     });
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem("users");
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return JSON.parse(localStorage.getItem("users"));
 };
 
 const AuthService = {

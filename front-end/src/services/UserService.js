@@ -5,13 +5,11 @@ import authHeader from "./auth-header.js";
 const API_URL = "http://localhost:5000/api/users/";
 const getUser = () => {
   return axios.get(
-    API_URL + "user",
+    API_URL + "users",
     { headers: authHeader() }
   );
 };
 
-const UserService = {
-  getUser
-};
+const UserService = { getUser };
 
 export default UserService;
