@@ -24,13 +24,13 @@ This is a web application built using the MERN stack (MongoDB, Express.js, React
 1. Clone the repository to your local machine
 
 ```sh
-git clone https://github.com/Abbes-Zoi-Org/Green-Field-Project.git
+$ git clone https://github.com/Abbes-Zoi-Org/Green-Field-Project.git
 ```
 
 2. Install dependencies 
 - Front-End:
 ```sh
-npm install
+$ npm install
 ```
 
 ```sh
@@ -55,7 +55,7 @@ npm install
 - Back-End:
 
 ```sh
-npm install
+$ npm install
 ```
 ```sh
 
@@ -95,7 +95,7 @@ This app can be deployed to any platform that supports Node.js, such as Heroku o
 
 ## License
 
-[MIT](https://github.com/expressjs/express/blob/master/LICENSE)
+[MIT](#)
 
 [//]: # 
 
