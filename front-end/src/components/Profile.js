@@ -1,7 +1,7 @@
 import React from "react";
 // Services
 import AuthService from "../services/AuthService.js";
-
+import green from "../img/green-circle-emoji.png"
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
   // const currentUser = {
@@ -15,7 +15,8 @@ const Profile = () => {
   return (
     <div className="card-container card">
       <header className="jumbotron">
-        <h2 className="text-center">Profile</h2>
+        <h2 className="text-center">
+          {currentUser.user.name}'s Profile {currentUser.user.status === "online"? <img width={20} src={green}/> : "hi"} {/*we can add green light if user is online*/}        </h2>
       </header>
       <br></br>
       <div className="d-flex justify-content-evenly">
