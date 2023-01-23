@@ -79,7 +79,7 @@ $ npm install
 ```
 3. Start the development server
 ```sh
-npm run dev
+$ npm run dev
 ```
 ## Deployment
 
@@ -95,7 +95,11 @@ This app can be deployed to any platform that supports Node.js, such as Heroku o
 
 ## License
 
-[MIT](#)
+
+<p align="center"> <strong> OpenSource </strong>
+  <img src="https://uploads.keitaro.com/uploads/2020/08/open-source.png" width="100"/>
+
+</p>
 
 [//]: # 
 
