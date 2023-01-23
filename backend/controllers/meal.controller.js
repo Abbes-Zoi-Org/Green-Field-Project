@@ -49,7 +49,7 @@ exports.findOne = (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .send({ message: `Error retrieving Meal with id=${id}.` });
+        .send({ message: err.message || `Error retrieving Meal with id=${id}.` });
     });
 };
 
@@ -70,7 +70,7 @@ exports.update = (req, res) => {
       };
     })
     .catch(err => {
-      res.status(500).send({ message: `Error updating Meal with id=${id}.` });
+      res.status(500).send({ message: err.message || `Error updating Meal with id=${id}.` });
     });
 };
 
@@ -87,7 +87,7 @@ exports.delete = (req, res) => {
       };
     })
     .catch(err => {
-      res.status(500).send({ message: `Could not delete Meal with id=${id}.` });
+      res.status(500).send({ message: err.message || `Could not delete Meal with id=${id}.` });
     });
 };
 
@@ -99,14 +99,5 @@ exports.deleteAll = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({ message: err.message || "Some error occurred while removing all meals." });
-    });
-};
-
-// find all watched Meals
-exports.findAllWatched = (req, res) => {
-  Meal.find({ watched: true })
-    .then(data => { res.send(data); })
-    .catch(err => {
-      res.status(500).send({ message: err.message || "Some error occurred while retrieving meals." });
     });
 };
