@@ -54,6 +54,11 @@ router.post("/login", (req, res) => {
         const payload = {
           id: user.id,
           name: user.name,
+          email: user.email,
+          age: user.age,
+          gender: user.gender,
+          status: user.status,
+          date: user.date,
         };
         jwt.sign(
           payload,
@@ -65,6 +70,7 @@ router.post("/login", (req, res) => {
             res.json({
               success: true,
               token: "Bearer " + token,
+              user: payload,
             });
           }
         );

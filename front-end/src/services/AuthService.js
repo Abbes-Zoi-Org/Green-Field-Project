@@ -29,6 +29,7 @@ const login = (email, password) => {
       if (res.data.token) {
         localStorage.setItem("users", JSON.stringify(res.data));
       }
+      console.log(res.data)
       return res.data;
     });
 };
