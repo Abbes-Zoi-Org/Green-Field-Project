@@ -9,21 +9,20 @@ import Register from "./components/Register.js";
 import Login from "./components/Login.js";
 import Home from "./components/Home.js";
 import Profile from "./components/Profile.js";
-import User from "./components/User.js";
-import Meal from "./components/Meal.js";
 import MealsList from "./components/MealsList.js";
 // Services
 import AuthService from "./services/AuthService.js";
 
 // App
 function App() {
-  const [currentUser, setCurrentUser] = useState(true); // true or false for testing
+  const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
+    console.log(user);
     if (user) { setCurrentUser(user); }
   }, []);
   const logOut = () => {
-    setCurrentUser(false);
+    setCurrentUser(undefined);
     AuthService.logout();
   };
 
@@ -35,7 +34,6 @@ function App() {
           <Link to={"/"} className="navbar-brand ms-3">
             Calories Tracker
           </Link>
-
           {currentUser ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
@@ -46,7 +44,6 @@ function App() {
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
                   Profile
-                  {currentUser.username}
                 </Link>
               </li>
               <li className="nav-item">
@@ -79,9 +76,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={<Profile/>} />
-          <Route path="/user" element={<User/>} />
           <Route path="/meals" element={<MealsList />} />
-          <Route path="/meals/:id" element={<Meal />} />
         </Routes>
       </div>
     </div>
