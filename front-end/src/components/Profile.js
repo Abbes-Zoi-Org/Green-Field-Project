@@ -3,14 +3,15 @@ import React from "react";
 import AuthService from "../services/AuthService.js";
 
 const Profile = () => {
-  // const currentUser = AuthService.getCurrentUser();
+  const currentUser = AuthService.getCurrentUser();
 
   return (
     <div className="card-container card">
       <header className="jumbotron">
         <h2>Profile</h2>
+      </header>
         <p>
-          <strong>Name:</strong> 
+          <strong>Name:</strong>
         </p>
         <p>
           <strong>Age:</strong> 
@@ -19,7 +20,7 @@ const Profile = () => {
           <strong>Gender:</strong> 
         </p>
         <p>
-          <strong>Height:</strong> 
+          <strong>Height:</strong>
         </p>
         <p>
           <strong>Weight:</strong> 
@@ -27,7 +28,7 @@ const Profile = () => {
         <p>
           <strong>BMI:</strong> 
         </p>
-      </header>
+
     </div>
   );
 };

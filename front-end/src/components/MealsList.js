@@ -6,7 +6,6 @@ import AddMeal from "./AddMeal.js";
 // Services
 import MealService from "../services/MealService.js";
 
-
 const MealsList = () => {
   const [meals, setMeals] = useState([]);
   const [currentMeal, setCurrentMeal] = useState(null);
@@ -51,21 +50,6 @@ const MealsList = () => {
     <div className="list row">
       <div className="col-md-6">
 
-        <ul className="list-group">
-          {meals &&
-            meals.map((meal, index) => (
-              <li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-                onClick={() => setActiveMeal(meal, index)}
-                key={index}
-              >
-                {meal.title}
-              </li>
-            ))}
-        </ul>
-
         <Popup trigger={
           <button className="m-3 btn btn-lg btn-success">
             Add Meal
@@ -75,6 +59,22 @@ const MealsList = () => {
               <AddMeal />
             </div>
         </Popup>
+
+        <ul className="list-group">
+          {meals &&
+            meals.map((meal, index) => (
+              <li
+                className={
+                  "list-group-item" + (index === currentIndex ? "active" : "")
+                }
+                onClick={() => setActiveMeal(meal, index)}
+                key={index}
+              >
+                {meal.title}
+                {meal.calories}
+              </li>
+            ))}
+        </ul>
 
         <div className="col-md-6">
         {currentMeal && (

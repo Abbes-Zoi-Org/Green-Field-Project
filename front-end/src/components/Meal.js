@@ -86,7 +86,7 @@ const Meal = (props) => {
 
           <button
             type="submit"
-            className="badge badge-success"
+            className="badge badge-primary"
             onClick={updateMeal}
           >
             Update

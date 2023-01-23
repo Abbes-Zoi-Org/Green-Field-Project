@@ -1,25 +1,11 @@
-import React, { useEffect, useState} from "react";
-// Services
-import UserService from "../services/UserService.js";
+import React from "react";
 
 const Home = () => {
-  const [content, setContent] = useState("");
-
-  useEffect(() => {
-    UserService.getPublicContent().then(
-      (res) => { setContent(res.data); },
-      (err) => {
-        const cont = (err.response && err.response.data) || err.message || err.toString();
-        setContent(cont);
-      }
-    );
-  }, []);
-
   return (
-    <div className="container">
+    <div className="container text-center">
       <header className="jumbotron">
-        <h3>Welcome!</h3>
-        {/*<h3>{content}</h3>*/}
+        <h2>Welcome to</h2>
+        <h1>CALORIES TRACKER!</h1>
       </header>
     </div>
   );

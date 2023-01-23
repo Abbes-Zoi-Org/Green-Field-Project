@@ -3,7 +3,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: rgb(88, 6, 6);
+  color: rgb(6, 40, 20);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
   margin: 0;
@@ -44,7 +44,7 @@ label {
 }
 
 .card {
-  background-color: #ffefc4;
+  background-color: rgb(253, 243, 214);
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
@@ -64,7 +64,5 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-}
-.cursor-pointer{
   cursor: pointer;
 }

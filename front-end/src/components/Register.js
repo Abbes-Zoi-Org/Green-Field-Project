@@ -4,7 +4,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-// Avatar
+// Images
 import profile from "../img/profile.png"
 // Services
 import AuthService from "../services/AuthService.js";
@@ -83,7 +83,7 @@ const Register = () => {
   function picValidate(e) {
     const file = e.target.files[0];
     if (file.size >= 1048576) {
-      alert("Please choose a smaller Profile Picture Max size 1Mb");
+      alert("Please choose a smaller profile picture. Max size 1MB");
     } else {
       setPic(file);
       setPicpreview(URL.createObjectURL(file));
@@ -109,7 +109,6 @@ const Register = () => {
       setPicupload(false);
     }
   }
-
 
   const onChangeUsername = (e) => {
     const name = e.target.value;
@@ -158,8 +157,8 @@ const Register = () => {
       <div className="card card-container" >
           <img
             src={picPreview || profile}
-            alt="Profile"
-            className="profile-img-card rounded-circle cursor-pointer"
+            alt="profile-img"
+            className="profile-img-card"
             onClick={addFile}
           />
             <input
@@ -190,7 +189,7 @@ const Register = () => {
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <Input
-                  type="text"
+                  type="email"
                   className="form-control"
                   name="email"
                   value={email}
@@ -224,7 +223,7 @@ const Register = () => {
               </div>
               {/*--- Sign Up ---*/}
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-success btn-block">Sign Up</button>
               </div>
             </div>
           )}

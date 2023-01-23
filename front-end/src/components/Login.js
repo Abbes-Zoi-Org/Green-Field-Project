@@ -6,7 +6,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 // Services
 import AuthService from "../services/AuthService.js";
-// Avatar
+// Images
 import profile from "../img/profile.png";
 
 const required = (value) => {
@@ -25,14 +25,14 @@ const Login = () => {
   const form = useRef();
   const checkBtn = useRef();
 
-  const [email, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const onChangeUsername = (e) => {
+  const onChangeEmail = (e) => {
     const email = e.target.value;
-    setUsername(email);
+    setEmail(email);
   };
 
   const onChangePassword = (e) => {
@@ -75,15 +75,15 @@ const Login = () => {
           className="profile-img-card"
         />
         <Form onSubmit={handleLogin} ref={form}>
-          {/* --- Username ---*/}
+          {/* --- Email ---*/}
           <div className="form-group">
-            <label htmlFor="username">Email</label>
+            <label htmlFor="email">Email</label>
             <Input
               type="email"
               className="form-control"
-              name="username"
+              name="email"
               value={email}
-              onChange={onChangeUsername}
+              onChange={onChangeEmail}
               validations={[required]}
             />
           </div>
@@ -101,7 +101,7 @@ const Login = () => {
           </div>
           {/* --- Login Button ---*/}
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button className="btn btn-success btn-block" disabled={loading}>
               {loading && ( <span className="spinner-border spinner-border-sm"></span> )}
               <span>Login</span>
             </button>

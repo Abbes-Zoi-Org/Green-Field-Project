@@ -18,7 +18,7 @@ const User = () => {
   return (
     <div className="container">
       <header className="jumbotron">
-        <h3>UserJS</h3>
+        <h3>User</h3>
         <h3>{content}</h3>
       </header>
     </div>

@@ -48,7 +48,7 @@ const AddMeal = () => {
         <div>
           <h4>Added successfully!</h4>
           <button className="btn btn-success" onClick={newMeal}>
-            Add
+            Add Meal
           </button>
         </div>
       ) : (

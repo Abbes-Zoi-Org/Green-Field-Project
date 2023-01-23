@@ -17,7 +17,7 @@ import AuthService from "./services/AuthService.js";
 
 // App
 function App() {
-  const [currentUser, setCurrentUser] = useState(undefined); // true or false for testing
+  const [currentUser, setCurrentUser] = useState(true); // true or false for testing
   useEffect(() => {
     const user = AuthService.getCurrentUser();
     if (user) { setCurrentUser(user); }
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       {/* --- NavBar --- */}
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-success">
           <Link to={"/"} className="navbar-brand ms-3">
             Calories Tracker
           </Link>
@@ -46,9 +46,10 @@ function App() {
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
                   Profile
+                  {currentUser.username}
                 </Link>
               </li>
-              <li className="nav-item align-self-end">
+              <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
                   LogOut
                 </a>
@@ -73,14 +74,14 @@ function App() {
       {/*--- Routes ---*/}
       <div className="container mt-3">
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/meals/:id" element={<Meal />} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/user" element={<User/>} />
           <Route path="/meals" element={<MealsList />} />
+          <Route path="/meals/:id" element={<Meal />} />
         </Routes>
       </div>
     </div>
