@@ -25,7 +25,7 @@ require("./config/passport.js")(passport);
 app.use("/api/users", users);
 require("./routes/api/meal.routes")(app);
 
-// for testing
+// test message
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the application." });
 });

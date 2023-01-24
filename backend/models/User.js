@@ -21,6 +21,12 @@ const UserSchema = new Schema(
     gender: {
       type: String,
     },
+    height: {
+      type: Number,
+    },
+    weight: {
+      type: Number,
+    },
     status: {
       type: String,
       default: "online",
