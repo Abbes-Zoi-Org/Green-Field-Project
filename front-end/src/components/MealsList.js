@@ -54,7 +54,7 @@ const MealsList = () => {
       <div className="col-md-6">
         <h4>Meals List</h4>
         {/*--- Buttons ---*/}
-        <Popup trigger={<button className="btn btn-success" >Add Meal</button>} position="right center">
+        <Popup trigger={<button className="btn btn-success" >Add Meal</button>} position="bottom center">
           <div className="card"><AddMeal/></div>
         </Popup>
         <button
@@ -84,7 +84,6 @@ const MealsList = () => {
               </li>
             ))}
         </ul>
-
       </div>
       {/*--- Routes ---*/}
         <div className="container mt-3">

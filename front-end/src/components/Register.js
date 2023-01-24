@@ -5,7 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 // Images
-import profile from "../img/profile.png"
+import profile from "../img/profile.png";
 // Services
 import AuthService from "../services/AuthService.js";
 
@@ -16,7 +16,7 @@ const required = (value) => {
         This field is required
       </div>
     );
-  };
+  }
 };
 
 const validEmail = (value) => {
@@ -26,7 +26,7 @@ const validEmail = (value) => {
         This is not a valid email
       </div>
     );
-  };
+  }
 };
 
 const validUsername = (value) => {
@@ -36,7 +36,7 @@ const validUsername = (value) => {
         The username must be between 3 and 20 characters
       </div>
     );
-  };
+  }
 };
 
 const validPassword = (value) => {
@@ -46,17 +46,17 @@ const validPassword = (value) => {
         The password must be between 8 and 30 characters
       </div>
     );
-  };
+  }
 };
 
 const validPassword2 = (value, password) => {
-  if ((parseInt(value) === parseInt(password))) {
+  if (parseInt(value) === parseInt(password)) {
     return (
       <div className="alert alert-danger" role="alert">
         Passwords do not match.
       </div>
     );
-  };
+  }
 };
 
 const Register = () => {
@@ -69,9 +69,8 @@ const Register = () => {
   const [password2, setPassword2] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
-  
-  //Picture
 
+  //Picture
   const inputRef = useRef(null);
   const addFile = () => {
     inputRef.current.click();
@@ -106,7 +105,7 @@ const Register = () => {
       const urlData = await res.json();
       setPicupload(false);
       pic = urlData.url.toString();
-      console.log("%%%%" + pic )
+      console.log("%%%%" + pic);
     } catch (error) {
       setPicupload(false);
     }
@@ -139,39 +138,42 @@ const Register = () => {
     setSuccessful(false);
     form.current.validateAll();
     if (checkBtn.current.context._errors.length === 0) {
-    AuthService.register(name, email, password, password2, pic).then(
+      AuthService.register(name, email, password, password2, pic).then(
         (res) => {
-          console.log(res.status)
+          console.log(res.status);
           setMessage(res.data.message);
           setSuccessful(true);
         },
         (err) => {
-          const resMessage = (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+          const resMessage =
+            (err.response && err.response.data && err.response.data.message) ||
+            err.message ||
+            err.toString();
           setMessage(resMessage);
           setSuccessful(false);
         }
       );
-    };
-  };
+    }
+  }
 
   return (
     <div className="col-md-12">
-      <div className="card card-container" >
-          <img
-            src={picPreview || profile}
-            alt="profile-img"
-            className="profile-img-card"
-            onClick={addFile}
-          />
-            <input
-              ref={inputRef}
-              type="file"
-              className="file-add"
-              id="profile-pic"
-              hidden
-              accept="image/png, image/jpeg image/jpg"
-              onChange={picValidate}
-            />
+      <div className="card card-container">
+        <img
+          src={picPreview || profile}
+          alt="profile-img"
+          className="profile-img-card"
+          onClick={addFile}
+        />
+        <input
+          ref={inputRef}
+          type="file"
+          className="file-add"
+          id="profile-pic"
+          hidden
+          accept="image/png, image/jpeg image/jpg"
+          onChange={picValidate}
+        />
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
@@ -233,7 +235,9 @@ const Register = () => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={
+                  successful ? "alert alert-success" : "alert alert-danger"
+                }
                 role="alert"
               >
                 {message}
