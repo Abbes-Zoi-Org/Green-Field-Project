@@ -1,5 +1,5 @@
 module.exports = {
-  mongoURL: MONGO_URL
+  mongoURL: "MONGO_URL"
   ,
   secretOrKey: "secret"
 };
