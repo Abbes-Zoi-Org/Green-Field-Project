@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 // Services
 import AuthService from "../services/AuthService.js";
 import green from "../img/green-circle-emoji.png";
+
 const Profile = () => {
-  const currentUser = AuthService.getCurrentUser();
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser());
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setCurrentUser({ ...currentUser, [name]: value });
+  };
 
   return (
     <div className="card-container card">
       <header className="jumbotron">
         <h2 className="text-center">
-          {currentUser.user.name}'s Profile
+          {currentUser.user.name}'s profile
           {currentUser.user.status === "online" ? (
-            <img width={20} src={green} alt="Status" />
+            <img className="ms-2" width={20} src={green} alt="Status" />
           ) : (
             "Offline"
           )}
-          {/*we can add green light if user is online*/}
         </h2>
       </header>
       <img
@@ -24,35 +29,71 @@ const Profile = () => {
         alt="Profile Pic"
       />
       <br></br>
-      <div className="d-flex justify-content-evenly">
-        <div>
-          <p>
-            <strong>Name:</strong>
-          </p>
-          <p>
-            <strong>Age:</strong>
-          </p>
-          <p>
-            <strong>Gender:</strong>
-          </p>
-          <p>
-            <strong>Height:</strong>
-          </p>
-          <p>
-            <strong>Weight:</strong>
-          </p>
+      <div>
+        <div className="form-group">
+          <strong>Age:</strong>
+          <input
+            type="number"
+            placeholder="&lt;age&gt;"
+            className="tag"
+            id="age"
+            required
+            value={currentUser.user.age}
+            onChange={handleInputChange}
+            name="age"
+          />
         </div>
-        <div>
-          <p>{currentUser.user.name}</p>
-          <p>{currentUser.user.age}</p>
-          <p>{currentUser.user.gender}</p>
-          {currentUser.user.height} cm<sup>2</sup>
-          <p></p>
-          <p>{currentUser.user.weight} kg</p>
+        <br></br>
+        <div className="form-group">
+          <strong>Gender:</strong>
+          <input
+              type="text"
+              placeholder="&lt;gender&gt;"
+              className="tag"
+              id="gender"
+              required
+              value={currentUser.user.gender}
+              onChange={handleInputChange}
+              name="gender"
+           />
+        </div>
+        <br></br>
+        <div className="form-group">
+          <strong>Height:</strong>
+          <input
+              type="number"
+              placeholder="&lt;height&gt;"
+              className="tag"
+              id="height"
+              required
+              value={currentUser.user.height}
+              onChange={handleInputChange}
+              name="height"
+            />
+        </div>
+        <br></br>
+        <div className="form-group">
+          <strong>Weight:</strong>
+          <input
+              type="number"
+              placeholder="&lt;weight&gt;"
+              className="tag"
+              id="weight"
+              required
+              value={currentUser.user.weight}
+              onChange={handleInputChange}
+              name="weight"
+            />
         </div>
       </div>
+      <button className="m-3 btn btn-success">Save Changes</button>
     </div>
   );
 };
 
 export default Profile;
+
+/*
+cm<sup>2</sup>
+kg
+*/
