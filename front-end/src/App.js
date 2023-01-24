@@ -18,7 +18,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    console.log(user);
     if (user) { setCurrentUser(user); }
   }, []);
   const logOut = () => {

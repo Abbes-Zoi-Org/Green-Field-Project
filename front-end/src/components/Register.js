@@ -76,7 +76,7 @@ const Register = () => {
   const addFile = () => {
     inputRef.current.click();
   };
-  const [pic, setPic] = useState(null);
+  const [picture, setPic] = useState(null);
   // eslint-disable-next-line
   const [picUpload, setPicupload] = useState(false);
   const [picPreview, setPicpreview] = useState(null);
@@ -89,9 +89,10 @@ const Register = () => {
       setPicpreview(URL.createObjectURL(file));
     }
   }
+  let pic;
   async function uploadPic() {
     const data = new FormData();
-    data.append("file", pic);
+    data.append("file", picture);
     data.append("upload_preset", "qpidzcci");
     try {
       setPicupload(true);
@@ -104,7 +105,8 @@ const Register = () => {
       );
       const urlData = await res.json();
       setPicupload(false);
-      return urlData.url;
+      pic = urlData.url.toString();
+      console.log("%%%%" + pic )
     } catch (error) {
       setPicupload(false);
     }
@@ -130,9 +132,9 @@ const Register = () => {
     setPassword2(password2);
   };
 
-  const handleRegister = (e) => {
+  async function handleRegister(e) {
     e.preventDefault();
-    uploadPic();
+    await uploadPic();
     setMessage("");
     setSuccessful(false);
     form.current.validateAll();

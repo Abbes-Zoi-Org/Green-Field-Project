@@ -59,6 +59,7 @@ router.post("/login", (req, res) => {
           gender: user.gender,
           status: user.status,
           date: user.date,
+          pic: user.pic,
         };
         jwt.sign(
           payload,
