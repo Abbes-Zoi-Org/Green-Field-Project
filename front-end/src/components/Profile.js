@@ -4,13 +4,6 @@ import AuthService from "../services/AuthService.js";
 import green from "../img/green-circle-emoji.png";
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
-  // const currentUser = {
-  //   username: "Zoi",
-  //   age: "29",
-  //   gender: "Female",
-  //   height: 160,
-  //   weight: 65
-  // }
 
   return (
     <div className="card-container card">
