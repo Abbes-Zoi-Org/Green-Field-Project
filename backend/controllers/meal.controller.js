@@ -11,7 +11,7 @@ exports.create = (req, res) => {
   // create a Meal
   const meal = new Meal({
     title: req.body.title,
-    calories: req.body.calories,
+    calories: req.body.calories
   });
   // save Meal in the database
   meal
@@ -49,7 +49,7 @@ exports.findOne = (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .send({ message: err.message || `Error retrieving Meal with id=${id}.` });
+        .send({ message: `Error retrieving Meal with id=${id}.` });
     });
 };
 
@@ -70,7 +70,7 @@ exports.update = (req, res) => {
       };
     })
     .catch(err => {
-      res.status(500).send({ message: err.message || `Error updating Meal with id=${id}.` });
+      res.status(500).send({ message: `Error updating Meal with id=${id}.` });
     });
 };
 
@@ -87,7 +87,7 @@ exports.delete = (req, res) => {
       };
     })
     .catch(err => {
-      res.status(500).send({ message: err.message || `Could not delete Meal with id=${id}.` });
+      res.status(500).send({ message: `Could not delete Meal with id=${id}.` });
     });
 };
 

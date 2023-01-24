@@ -1,16 +1,18 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-const MealSchema = new Schema(
-  {
-    title: {
-      type: String,
+module.exports = mongoose => {
+  let schema = mongoose.Schema(
+    {
+      title: String,
+      calories: Number,
     },
-    calories: {
-      type: Number,
-    },
-  },
-  { timestamps: true }
-);
-const Meal = mongoose.model("meals", MealSchema);
+    { timestamps: true }
+  );
 
-module.exports = Meal;
+  schema.method("toJSON", function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
+  });
+
+  const Meal = mongoose.model("meal", schema);
+  return Meal;
+};
